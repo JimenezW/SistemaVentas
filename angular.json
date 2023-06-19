@@ -116,7 +116,8 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "vex:build:production"
+              "browserTarget": "vex:build:production",
+              "proxyConfig": "proxy.conf.json"
             },
             "uat": {
               "browserTarget": "vex:build:uat"

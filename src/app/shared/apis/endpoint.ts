@@ -1,10 +1,10 @@
 export const endpoint={
     //Category-module
-    LIST_CATEGORIES:'Category',
-    LIST_SELECT_CATEGORIES:'Caregory/Sele',
-    CATEGORY_BY_ID:'Category/',
-    CATEGORY_REGISTER:'Category/Register/',
-    CATEGORY_EDIT:'Category/Edit/',
-    CATEGORY_REMOVE:'Category/Remove/'
+    LIST_CATEGORIES:'/api/Category',
+    LIST_SELECT_CATEGORIES:'/api/Caregory/Sele',
+    CATEGORY_BY_ID:'/api/Category/',
+    CATEGORY_REGISTER:'/api/Category/Register/',
+    CATEGORY_EDIT:'/api/Category/Edit/',
+    CATEGORY_REMOVE:'/api/Category/Remove/'
 
 }
