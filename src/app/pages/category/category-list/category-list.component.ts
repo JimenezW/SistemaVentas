@@ -11,7 +11,7 @@ import { CategoryApi } from 'src/app/responses/category/category.response';
   selector: 'vex-category-list',
   templateUrl: './category-list.component.html',
   styleUrls: ['./category-list.component.scss'],
-  animations:[
+  animations: [
     stagger40ms,
     scaleIn400ms,
     fadeInRight400ms
@@ -19,24 +19,24 @@ import { CategoryApi } from 'src/app/responses/category/category.response';
 })
 export class CategoryListComponent implements OnInit {
 
- component
+  component
 
   constructor(
-    customTitle:CustomTitleService,
-    public _categoryService:CategoryService
-    ) {
-      customTitle.set('Categorias')
-     }
-
-  ngOnInit(): void {
-    this.component=componentSettings
+    customTitle: CustomTitleService,
+    public _categoryService: CategoryService
+  ) {
+    customTitle.set('Categorias')
   }
 
-  rowClick(e:any){
-    let action = e.action;
-    let category=e.row
+  ngOnInit(): void {
+    this.component = componentSettings
+  }
 
-    switch(action){
+  rowClick(e: any) {
+    let action = e.action;
+    let category = e.row
+
+    switch (action) {
       case 'edit':
         this.CategoryEdit(category);
         break
@@ -48,33 +48,45 @@ export class CategoryListComponent implements OnInit {
 
   }
 
-  setData(data:any=null){
-    this.component.filters.stateFilter=data.value;
-    this.component.menuOpen=false;
+  setData(data: any = null) {
+    this.component.filters.stateFilter = data.value;
+    this.component.menuOpen = false;
     this.formatGetInputs();
   }
 
-  formatGetInputs(){
-    let inputs={
-      numFilter:0,
-      textFilter:"",
-      stateFilter:null,
-      startDate:null,
-      endDate:null
+  formatGetInputs() {
+    let inputs = {
+      numFilter: 0,
+      textFilter: "",
+      stateFilter: null,
+      startDate: null,
+      endDate: null
     }
 
-    if(this.component.filters.stateFilter != null){
-      inputs.stateFilter=this.component.filters.stateFilter;
+    if (this.component.filters.numFilter != '') {
+      inputs.numFilter = this.component.filters.numFilter;
+      inputs.textFilter = this.component.filters.textFilter;
     }
 
-    this.component.getInputs=inputs;
+    if (this.component.filters.stateFilter != null) {
+      inputs.stateFilter = this.component.filters.stateFilter;
+    }
+
+    this.component.getInputs = inputs;
 
   }
 
-  CategoryEdit(row:CategoryApi){
+  search(data: any) {
+    
+    this.component.filters.numFilter = data.searchValue;
+    this.component.filters.textFilter = data.searchString;
+    this.formatGetInputs();
+  }
+
+  CategoryEdit(row: CategoryApi) {
 
   }
-  CategoryRemove(row:CategoryApi){
+  CategoryRemove(row: CategoryApi) {
 
   }
 

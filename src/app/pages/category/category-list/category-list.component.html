@@ -5,11 +5,27 @@
                 <ic-icon @scaleIn [icon]="component.icCategory" class="hidden sm:block"></ic-icon>
                 <span @fadeInRight class="ml-4 block">Gestión de categorias</span>
             </h2>
+            <div class="flex items-center justify-end w-full">
+                <vex-search-box
+                [searchOptions]="component.searchOptions"
+                (search)="search($event)"
+                
+                >
+
+                </vex-search-box>
+            </div>
         </div>
     </div>
     <div class="-mt-14 pt-0 overflow-hidden flex" vexContainer>
         <mat-drawer-container class="bg-transparent flex-auto flex">
             <mat-drawer-content class="p-gutter pt-0 flex-auto flex items-start">
+                <vex-list-table-menu class="hidden sm:block mr-6" 
+                [currentCategory]="component.getInputs.statefilter"
+                [items]="component.menuItems"
+                (filterChange)="setData($event)"
+                >
+
+                </vex-list-table-menu>
                 <div class="card h-full overflow-hidden flex-auto">
                     <vex-list-table 
                         (rowClick)="rowClick($event)"

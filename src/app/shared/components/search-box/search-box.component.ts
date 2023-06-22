@@ -132,7 +132,6 @@ export class SearchBoxComponent implements OnInit {
     }
 
     submit(reset = false) {
-
         if (!reset) {
             this.isActive = true;
             if (!this.form.valid) {
