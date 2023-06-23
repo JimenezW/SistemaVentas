@@ -6,6 +6,8 @@ import { stagger40ms } from 'src/@vex/animations/stagger.animation';
 import { CategoryService } from 'src/app/services/category.service';
 import { componentSettings } from './category-list-config';
 import { CategoryApi } from 'src/app/responses/category/category.response';
+import { DatesFilter } from '@shared/functions/actions';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'vex-category-list',
@@ -23,7 +25,8 @@ export class CategoryListComponent implements OnInit {
 
   constructor(
     customTitle: CustomTitleService,
-    public _categoryService: CategoryService
+    public _categoryService: CategoryService,
+    public _dialog:MatDialog
   ) {
     customTitle.set('Categorias')
   }
@@ -72,6 +75,11 @@ export class CategoryListComponent implements OnInit {
       inputs.stateFilter = this.component.filters.stateFilter;
     }
 
+    if(this.component.filters.startDate != '' && this.component.filters.endDate != ''){
+      inputs.startDate = this.component.filters.startDate;
+      inputs.endDate = this.component.filters.endDate;
+    }
+
     this.component.getInputs = inputs;
 
   }
@@ -81,6 +89,10 @@ export class CategoryListComponent implements OnInit {
     this.component.filters.numFilter = data.searchValue;
     this.component.filters.textFilter = data.searchString;
     this.formatGetInputs();
+  }
+
+  dateFilterOpen(){
+    DatesFilter(this)
   }
 
   CategoryEdit(row: CategoryApi) {

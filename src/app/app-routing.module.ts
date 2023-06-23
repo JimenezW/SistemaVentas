@@ -14,7 +14,7 @@ const childrenRoutes: VexRoutes = [
   },
   {
     path:'categorias',
-    loadChildren:()=> import('./pages/category/category-routing.module').then(e => e.CategoryRoutingModule),
+    loadChildren:()=> import('./pages/category/category.module').then(e => e.CategoryModule),
     data:{
       containerEnabled:true
     }

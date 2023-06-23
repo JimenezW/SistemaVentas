@@ -13,6 +13,18 @@
                 >
 
                 </vex-search-box>
+                <div>
+                    <button
+                        mat-icon-button
+                        matTooltip="Filtro por rango de fechas"
+                        type="button"
+                        class="ml-8 text-primary-contrast"
+                        [ngClass]="{'extra-filters-active':component.filters_dates_active}"
+                        (click)="dateFilterOpen()"
+                    >
+                    <mat-icon [icIcon]="component.icCalendarMonth"></mat-icon>
+                </button>
+                </div>
             </div>
         </div>
     </div>
