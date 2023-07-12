@@ -33,6 +33,9 @@
             <mat-drawer-content class="p-gutter pt-0 flex-auto flex items-start">
                 <vex-list-table-menu class="hidden sm:block mr-6" 
                 [currentCategory]="component.getInputs.statefilter"
+                [buttonShow]="true"
+                buttonLabel="AGREGAR"
+                (buttonClick)="openDialogRegister()"
                 [items]="component.menuItems"
                 (filterChange)="setData($event)"
                 >

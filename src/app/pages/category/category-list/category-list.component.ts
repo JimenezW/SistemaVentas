@@ -8,6 +8,7 @@ import { componentSettings } from './category-list-config';
 import { CategoryApi } from 'src/app/responses/category/category.response';
 import { DatesFilter } from '@shared/functions/actions';
 import { MatDialog } from '@angular/material/dialog';
+import { CategoryManageComponent } from '../category-manage/category-manage.component';
 
 @Component({
   selector: 'vex-category-list',
@@ -93,6 +94,19 @@ export class CategoryListComponent implements OnInit {
 
   dateFilterOpen(){
     DatesFilter(this)
+  }
+
+  openDialogRegister(){
+    this._dialog.open(CategoryManageComponent,
+      {
+        disableClose:true,
+        width:'400px'
+      }
+    ).afterClosed().subscribe((res)=>{
+      if(res){
+        this.formatGetInputs();
+      }
+    });
   }
 
   CategoryEdit(row: CategoryApi) {
