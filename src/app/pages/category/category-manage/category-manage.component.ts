@@ -13,9 +13,8 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class CategoryManageComponent implements OnInit {
 
-  icClose = icClose;
   configs = configs;
-
+  icClose = icClose;
   form : FormGroup;
 
  
@@ -40,6 +39,9 @@ export class CategoryManageComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    if(this.data != undefined && this.data != null){
+      this.CategoryById(this.data.data.categoryId);
+    }
   }
 
   CategorySave():void{
@@ -73,6 +75,27 @@ export class CategoryManageComponent implements OnInit {
   }
 
   CategoryEdit(CategoryId : number):void{
-
+    this._categoryService.CategoryEdit(CategoryId,this.form.value).subscribe((res)=>{
+      if(res.isSuccess){
+        this._alert.success('Excelente', res.message);
+        this._dialogRef.close(true);
+      }else{
+        this._alert.warn('Atención', res.message);
+      }
+    });
   }
+
+  CategoryById(CategoryId : number):void{
+    this._categoryService.CategoryById(CategoryId).subscribe((res)=>{
+      this.form.reset({
+        categoryId:res.categoryId,
+        name:res.name,
+        description:res.description,
+        state:res.state
+      });
+    });
+  }
+
+
+
 }

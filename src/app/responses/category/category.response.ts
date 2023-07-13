@@ -1,10 +1,10 @@
 export interface Category{
-    CategoryId :number,
-    Name:string,
-    Description :string,
-    AuditCreateDate :Date,
-    State :number,
-    StateCategory:string
+    categoryId :number,
+    name:string,
+    description :string,
+    auditCreateDate :Date,
+    state :number,
+    stateCategory:string
 }
 
 export interface CategoryApi{
