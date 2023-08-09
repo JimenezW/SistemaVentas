@@ -1,5 +1,5 @@
 export interface TableColumns<T> {
-    Label: string
+    label: string
     cssLabel: string[]
     property: keyof T | string
     cssProperty: string[]

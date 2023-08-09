@@ -6,6 +6,7 @@ import icViewHeadline from '@iconify/icons-ic/twotone-view-headline';
 import icLabel from "@iconify/icons-ic/twotone-label";
 import { GenericValidators } from "@shared/validators/generic-validators";
 import icCalendarMonth from '@iconify/icons-ic/twotone-calendar-today';
+import { TableColumns } from "src/app/core/interfaces/list-table.interfaces";
 
 const searchOptions=[
     {
@@ -55,51 +56,78 @@ const  menuItems:ListTableMenu[]=[
     }
 ];
 
-const tableColumns:TableColumn<Category>[]=[
+const tableColumns:TableColumns<Category>[]=[
     {
         label:'Nombre',
         property:'name',
+        sortProperty:'name',
         type:"text",
-        cssClasses:['font-medium','w-10']
+        cssLabel:['font-bold','text-sm'],
+        cssProperty:['font-semibold','text-sm', 'text-left'],
+        sticky:true,
+        sort:true,
+        visible:true,
+        download:true
     },
     {
         label:'Descripcion',
         property:'description',
-        type:"textTruncate",
-        cssClasses:['font-medium','w-10']
+        sortProperty:'description',
+        type:"text",
+        cssLabel:['font-bold','text-sm'],
+        cssProperty:['font-semibold','text-sm', 'text-left'],
+        sticky:false,
+        sort:true,
+        visible:true,
+        download:true
     },
     {
         label:'F. Creación',
         property:'auditCreateDate',
+        sortProperty:'auditCreateDate',
         type:"datetime",
-        cssClasses:['font-medium','w-10']
+        cssLabel:['font-bold','text-sm'],
+        cssProperty:['font-semibold','text-sm', 'text-left'],
+        sticky:false,
+        sort:false,
+        visible:true,
+        download:true
     },
     {
         label:'Estado',
         property:'stateCategory',
         type:"badge",
-        cssClasses:['font-medium','w-10']
+        cssLabel:['font-bold','text-sm'],
+        cssProperty:['font-semibold','text-sm', 'text-left'],
+        sticky:false,
+        sort:false,
+        visible:true,
+        download:true
     },
     {
         label:'',
-        property:'menu',
-        type:'buttonGroup',
-        buttonItems:[
-            {
-                buttonLabel:'EDITAR',
-                buttonAction:'edit',
-                buttonCondition:null,
-                disable:false
-            },
-            {
-                buttonLabel:'ELIMINAR',
-                buttonAction:'remove',
-                buttonCondition:null,
-                disable:false
-            }
-        ],
-        cssClasses:['font-medium','w-10']
-    }
+        cssLabel:[],
+        property:'icEdit',
+        cssProperty:[],
+        type:'icon',
+        action:'edit',
+        sticky:false,
+        sort:false,
+        visible:true,
+        download:false
+    },
+    {
+        label:'',
+        cssLabel:[],
+        property:'icDelete',
+        cssProperty:[],
+        type:'icon',
+        action:'remove',
+        sticky:false,
+        sort:false,
+        visible:true,
+        download:false
+    }/**/
 ]
 
 const filters={

@@ -9,6 +9,7 @@ import { ListCategoryRequest } from '../requests/category/list-category-request'
 import { map } from 'rxjs/operators';
 import { CategoryRequest } from '../requests/category/category.request';
 import { ApiResponse } from '../commons/response..interface';
+import { getIcon } from '@shared/functions/helpers';
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,10 @@ export class CategoryService {
             e.badgeColor='text-gray bg-gray-light'
             break;
         }
+
+        e.icEdit = getIcon('icEdit', 'Editar categoria',true);
+        e.icDelete = getIcon('icDelete', 'Eliminar categoria',true);
+
       });
 
       return data;

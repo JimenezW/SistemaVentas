@@ -16,6 +16,7 @@ import { MatTableModule } from '@angular/material/table'
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { IconModule } from '@visurel/iconify-angular';
+import { fadeInUp400ms } from 'src/@vex/animations/fade-in-up.animation';
 
 @Component({
   selector: 'app-list-table',
@@ -23,7 +24,7 @@ import { IconModule } from '@visurel/iconify-angular';
   imports: [CommonModule, NgxSpinnerModule, MatTableModule, MatSortModule, MatIconModule, MatTooltipModule, IconModule, MatPaginatorModule],
   templateUrl: './list-table.component.html',
   styleUrls: ['./list-table.component.scss'],
-  animations: [scaleFadeIn400ms, fadeInRight400ms],
+  animations: [scaleFadeIn400ms, fadeInRight400ms, fadeInUp400ms],
   providers: [
     {
       provide: MatPaginator,
@@ -37,7 +38,7 @@ import { IconModule } from '@visurel/iconify-angular';
 })
 export class ListTableComponent<T> implements OnInit, AfterViewInit, OnChanges {
 
-  @Input() sevice?: DefaultService;
+  @Input() service?: DefaultService;
   @Input() columns?: TableColumns<T>[];
   @Input() getInputs: any;
   @Input() sortBy?: string;
@@ -100,7 +101,7 @@ export class ListTableComponent<T> implements OnInit, AfterViewInit, OnChanges {
       startWith(''),
       switchMap(() => {
         this._spinner.show('modal-table');
-        return this.sevice.GetAll(
+        return this.service.GetAll(
           this.paginator.pageSize,
           this.sort.active,
           this.sort.direction,
